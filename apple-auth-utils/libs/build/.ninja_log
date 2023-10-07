@@ -1,0 +1,5 @@
+# ninja log v5
+10	73	0	CMakeFiles/crypt.dir/src/asm/amd64/imd.s.obj	c3057ed4196e2976
+17	74	0	CMakeFiles/crypt.dir/src/asm/amd64/encrypt.s.obj	b1a3f4e64c2f1ad9
+8	318	0	CMakeFiles/crypt.dir/src/asm/amd64/imd.s.obj	c3057ed4196e2976
+12	319	0	CMakeFiles/crypt.dir/src/asm/amd64/encrypt.s.obj	b1a3f4e64c2f1ad9

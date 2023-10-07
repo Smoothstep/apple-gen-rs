@@ -1,0 +1,7 @@
+[workspace]
+members = [
+    "apple-auth-utils",
+    "apple-auth-py"
+]
+
+[workspace.dependencies]

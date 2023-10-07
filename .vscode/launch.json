@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "internalConsoleOptions": "openOnSessionStart",
+            "logging": {
+                "moduleLoad": false,
+                "programOutput": true,
+                "exceptions": true,
+                "processExit": true
+            },
+            "program": "${workspaceRoot}/target/debug/apple_functions.exe",
+            "name": "Debug executable 'apple_functions'",
+            "windows": {
+                "program": "${workspaceRoot}/target/debug/apple_functions.exe",
+            },
+            "env": {
+                "FIG_DISABLE_SENTRY": "1"
+            },
+            "args": [],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'apple_functions'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=apple_functions",
+                    "--package=apple_functions"
+                ],
+                "filter": {
+                    "name": "apple_functions",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

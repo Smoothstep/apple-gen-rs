@@ -1,0 +1,15 @@
+[package]
+name = "apple-auth-py"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "apple_auth"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies.apple-auth-utils]
+path = "../apple-auth-utils"
+
+[dependencies]
+pyo3 = { version = "0.19", features = ["extension-module"] }

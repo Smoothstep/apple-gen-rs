@@ -1,0 +1,53 @@
+Checking whether the ASM compiler is GNU using "--version" did not match "(GNU assembler)|(GCC)|(Free Software Foundation)":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile warning D9002 : Unbekannte Option "--version" wird ignoriert.
+cl : Befehlszeile error D8003 : Name der Quelldatei fehlt.
+Checking whether the ASM compiler is Clang using "--version" did not match "(clang version)":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile warning D9002 : Unbekannte Option "--version" wird ignoriert.
+cl : Befehlszeile error D8003 : Name der Quelldatei fehlt.
+Checking whether the ASM compiler is AppleClang using "--version" did not match "(Apple LLVM version)":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile warning D9002 : Unbekannte Option "--version" wird ignoriert.
+cl : Befehlszeile error D8003 : Name der Quelldatei fehlt.
+Checking whether the ASM compiler is ARMClang using "--version" did not match "armclang":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile warning D9002 : Unbekannte Option "--version" wird ignoriert.
+cl : Befehlszeile error D8003 : Name der Quelldatei fehlt.
+Checking whether the ASM compiler is HP using "-V" did not match "HP C":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile error D8004 : "/V" erfordert ein Argument.
+Checking whether the ASM compiler is Intel using "--version" did not match "(ICC)":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile warning D9002 : Unbekannte Option "--version" wird ignoriert.
+cl : Befehlszeile error D8003 : Name der Quelldatei fehlt.
+Checking whether the ASM compiler is IntelLLVM using "--version" did not match "(Intel[^
+]+oneAPI)":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile warning D9002 : Unbekannte Option "--version" wird ignoriert.
+cl : Befehlszeile error D8003 : Name der Quelldatei fehlt.
+Checking whether the ASM compiler is SunPro using "-V" did not match "Sun C":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile error D8004 : "/V" erfordert ein Argument.
+Checking whether the ASM compiler is XL using "-qversion" did not match "XL C":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+cl : Befehlszeile warning D9002 : Unbekannte Option "-qversion" wird ignoriert.
+cl : Befehlszeile error D8003 : Name der Quelldatei fehlt.

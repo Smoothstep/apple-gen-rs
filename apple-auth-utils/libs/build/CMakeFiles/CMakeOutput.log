@@ -1,0 +1,310 @@
+The system is: Windows - 10.0.19045 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: G:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x64/cl.exe 
+Build flags: ;-nologo;-MD;-Brepro
+Id flags:  
+
+The output was:
+0
+CMakeCCompilerId.c
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "C:/Users/hswek/source/repos/apple-gen/apple-gen/wrappers/rust/apple_gen/functions/libs/build/CMakeFiles/3.21.0-rc3/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: G:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x64/cl.exe 
+Build flags: ;-nologo;-MD;-Brepro
+Id flags:  
+
+The output was:
+0
+CMakeCXXCompilerId.cpp
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/hswek/source/repos/apple-gen/apple-gen/wrappers/rust/apple_gen/functions/libs/build/CMakeFiles/3.21.0-rc3/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Checking whether the ASM compiler is MSVC using "-?" matched "Microsoft":
+Microsoft (R) C/C++-Optimierungscompiler Version 19.37.32822 für x64
+Copyright (C) Microsoft Corporation. Alle Rechte vorbehalten.
+
+                         C/C++-COMPILEROPTIONEN
+
+
+                              -OPTIMIERUNG-
+
+/O1 maximale Optimierungen (Platz bevorzugen)
+/O2 maximale Optimierungen (Geschwindigkeit bevorzugen)
+/Ob<n> Inlineerweiterung (Standard: n=0)
+/Od Optimierungen deaktivieren (Standard)
+/Og Globale Optimierung aktivieren      
+/Oi[-] Systeminterne Funktionen aktivieren
+/Os Codespeicherplatz vorrangig         /Ot Codegeschwindigkeit vorrangig
+/Ox Optimierungen (Geschwindigkeit bevorzugen)
+/favor:<blend|AMD64|INTEL64|ATOM> Prozessor auswählen, für den optimiert werden soll. Mögliche Werte:
+    blend - Eine Kombination verschiedener Optimierungen für mehrere unterschiedliche x64-Prozessoren
+    AMD64 - 64-Bit-AMD-Prozessoren                                 
+    INTEL64 - Prozessoren mit Intel(R)64-Architektur                  
+    ATOM - Intel(R) Atom(TM)-Prozessoren                           
+
+                             -CODEGENERIERUNG-
+
+/Gu[-]: Stellen Sie sicher, dass unterschiedliche Funktionen unterschiedliche Adressen aufweisen.
+/Gw[-] separate globale Variablen für Linker
+/GF Schreibgeschütztes Stringpooling aktivieren
+/Gm[-] Minimale Neuerstellung aktivieren/Gy[-] Separate Funktionen für Linker
+/GS[-] Sicherheitsüberprüfungen aktivieren
+/GR[-] C++-RTTI aktivieren              
+/GX[-] C++-EH aktivieren (identisch mit /EHsc)
+/guard:cf[-] CFG aktivieren (Control Flow Guard, Ablaufsteuerungsscchutz)
+"/guard:ehcont[-]" zum Aktivieren von EH-Fortsetzungsmetadaten (CET)
+/EHs C++-EH aktivieren (ohne SEH-Ausnahmen)
+/EHa C++-EH aktivieren (mit SEH-Ausnahmen)
+/EHc nothrow als Standard für externes "C"
+/EHr immer noexcept-Laufzeitbeendigungsprüfungen generieren
+/fp:<contract|except[-]|fast|precise|strict> Gleitkommamodell wählen:
+    contract - Gleitkommakontraktionen beim Generieren von Code berücksichtigen
+    except[-] - Gleitkommaausnahmen beim Generieren von Code berücksichtigen
+    fast: "Schnelles" Gleitkommamodell mit weniger vorhersehbaren Ergebnissen
+    precise - "Präzises" Gleitkommamodell; Ergebnisse sind vorhersehbar.
+    strict - "Striktes" Gleitkommamodell (impliziert /fp:except)
+/Qfast_transcendentals generieren auch bei /fp:except systeminterne Inline-FP.
+/Qspectre[-] Entschärfungen für CVE 2017-5753 aktivieren
+/Qpar[-] parallele Codegenerierung aktivieren
+/Qpar-report:1 automatische Parallelisierungsdiagnose; parallelisierte Schleifen anzeigen
+/Qpar-report:2 automatische Parallelisierungsdiagnose; nicht parallelisierte Schleifen anzeigen
+/Qvec-report:1 automatische Vektorisierungsdiagnose; vektorisierte Schleifen anzeigen
+/Qvec-report:2 automatische Vektorisierungsdiagnose; nicht vektorisierte Schleifen anzeigen
+/GL[-] Link-Zeitcodegenerierung aktivieren
+/volatile:<iso|ms> flüchtiges Modell auswählen:
+    iso - Acquire-/release-Semantik bei flüchtigen Zugriffen nicht garantiert
+    ms  - Acquire-/release-Semantik bei flüchtigen Zugriffen garantiert
+/GA Für Windows-Anwendung optimieren    
+/Ge Stapelüberprüfung für alle Funktionen erzwingen
+/Gs[zahl] Stapelüberprüfungsaufrufe kontrollieren
+/Gh _penter-Funktionsaufruf aktivieren  /GH _pexit-Funktionsaufruf aktivieren
+/GT Fiber-sichere TLS-Zugriffe generieren
+/RTC1 Schnelle Überprüfungen aktivieren (/RTCsu)
+/RTCc Konvertierung für kleinere Typenüberprüfungen
+/RTCs Stapelrahmen-Laufzeitüberprüfung  
+/RTCu Nicht initialisierte lokale Syntaxüberprüfungen
+/clr[:Option] Für Common Language Runtime kompilieren; zulässige Optionen sind:
+    pure : Reine IL-Ausgabedatei generieren (kein nativer ausführbarer Code)
+    safe : Reine, überprüfbare IL-Ausgabedatei generieren
+    netcore : Assemblys für .NET Core-Runtime erstellen
+    noAssembly : Keine Assembly erstellen
+    nostdlib : .NET Framework-Systemverzeichnis beim Suchen nach Assemblys ignorieren
+    nostdimport : Erforderliche Assemblys nicht implizit importieren
+    initialAppDomain : Ursprüngliches AppDomain-Verhalten von Visual C++ 2002 aktivieren
+    implicitKeepAlive- : Implizite Ausgabe von System::GC::KeepAlive(this) deaktivieren
+/fsanitize=address Enable address sanitizer codegen
+/homeparams Schreiben von an die Register übergebenen Parametern in den Stapel erzwingen
+/GZ Stapelüberprüfungen aktivieren (/RTCs)
+/Gv __vectorcall-Aufrufkonvention       
+/arch:<AVX|AVX2|AVX512> Mindestanforderungen an die CPU-Architektur. Mögliche Werte:
+   AVX - Verwendung der für AVX-fähige CPUs verfügbaren Anweisungen aktivieren
+   AVX2 - Verwendung der für AVX2-fähige CPUs verfügbaren Anweisungen aktivieren
+   AVX512 - Verwendung der für AVX-512-fähige CPUs verfügbaren Anweisungen aktivieren
+/QIntel-jcc-erratum: Entschärfungen für Intel JCC-Erratum aktivieren
+/Qspectre-load: Aktivieren von Spectre-Entschärfungen für alle Anweisungen, die Arbeitsspeicher laden
+/Qspectre-load-cf: Spectre-Entschärfungen für alle Ablaufsteuerungsanweisungen, die Arbeitsspeicher laden, werden aktiviert.
+/Qspectre-jmp[-] Aktiviert Spectre-Minderungen für Anweisungen zum uneingeschränkten Springen.
+/fpcvt:<IA|BC> Kompatibilität der Konvertierung von Gleitkommazahlen in ganze Zahlen ohne Vorzeichen
+   IA: Ergebnisse kompatibel mit VCVTTSD2USI-Anweisung
+   BC: Ergebnisse kompatibel mit VS2017- und früheren Compilern
+/jumptablerdata Platziert Sprungtabellen für Switch case-Anweisungen im RDATA-Abschnitt.
+
+                              -AUSGABEDATEIEN-
+
+/Fa[Datei] Name der Assemblylistingdatei/FA[scu] Assemblyliste konfigurieren
+/Fd[Datei] Name der PDB-Datei           /Fe<Datei> Name der ausführbaren Datei
+/Fm[datei] Name der Zuordnungsdatei     /Fo<datei> Name der Objektdatei
+/Fp<Datei> Name der vorkompilierten Headerdatei
+/Fr[Datei] Name der Quellbrowserdatei   
+/FR[Datei ] Name der erweiterten SBR-Datei
+/Fi[datei] Vorverarbeitete Datei benennen
+/Fd: <Datei> Name der PDB-Datei         /Fe: <Datei> Name der ausführbaren Datei
+/Fm: <Datei> Name der Zuordnungsdatei   /Fo: <Datei> Name der Objektdatei
+/Fp: <Datei> Name der PCH-Datei         
+/FR: <Datei> Name der erweiterten SBR-Datei
+/Fi: <Datei> Vorverarbeitete Datei benennen
+/FT<dir>: Speicherort der für #import generierten Headerdateien
+/doc[Datei] XML-Dokumentationskommentare verarbeiten und optional die XDC-Datei benennen
+
+                              -PRÄPROZESSOR-
+
+/AI<Verz> Zu Assemblysuchpfad hinzufügen
+/FU<Datei> Assembly/Modul, deren/dessen Verwendung erzwungen wird 
+/C Kommentare nicht entfernen           /D<name>{=|#}<text> Makro definieren
+/E In stdout vorverarbeiten             /EP In stdout vorverarbeiten, kein #line
+/P In Datei vorverarbeiten              
+/Fx Eingefügten Code in Datei zusammenführen
+/FI<Datei> Name der Datei, deren Einschluss erzwungen wird
+/U<name> Vordefiniertes Makro entfernen /u Alle vordefinierten Makros entfernen
+/I<dir> Zu Include-Suchpfad hinzufügen  /X Standardspeicherorte ignorieren
+/PH generiert #pragma file_hash bei der Vorbearbeitung
+/PD: alle Makrodefinitionen drucken     
+
+                                -PROGRAMMIERSPRACHE-
+
+/std:<c++14|c++17|c++20|c++latest> C++ Standardversion
+    c++14 - ISO/IEC 14882:2014 (Standardwert)
+    c++17 - ISO/IEC 14882:2017
+    c++20 - ISO/IEC 14882:2020
+    c++latest - aktueller Entwurfsstandard (Featuregruppe kann sich ändern)
+/permissive[-] Nicht konformen Code für die Kompilierung zulassen (Änderungen der Featuresammlung vorbehalten, standardmäßig aktiviert)
+/Ze Erweiterungen aktivieren (Standard) /Za Erweiterungen deaktivieren
+/ZW WinRT-Spracherweiterungen aktivieren/Zs Nur Syntaxprüfung
+/Zc:arg1[,arg2] C++-Sprachübereinstimmung; folgende Argumente sind zulässig:
+  forScope[-]           Standard-C++ für Bereichsregeln erzwingen
+  wchar_t[-]            wchar_t ist der native Typ, nicht typedef
+  auto[-]               Neue C++-Standardbedeutung für "auto" erzwingen
+  trigraphs[-]          Trigraphen aktivieren (standardmäßig deaktiviert)
+  rvalueCast[-]         Standard-C++ für explizite Typenkonvertierungsregeln erzwingen
+  strictStrings[-]      Konvertierung von Zeichenfolgenliteral zu [char|wchar_t]*
+                        deaktivieren (standardmäßig deaktiviert)
+  implicitNoexcept[-]   Implizites "noexcept" für erforderliche Funktionen aktivieren
+  threadSafeInit[-]     Thread-sichere lokale statische Initialisierung aktivieren
+  inline[-]             Nicht referenzierte Funktion oder Daten entfernen, wenn es sich um
+                        COMDAT handelt oder nur eine interne Bindung vorhanden ist (standardmäßig deaktiviert)
+  sizedDealloc[-]       C++14-Funktionen für globale
+                        Belegungsfreigabe aktivieren (standardmäßig aktiviert)
+  throwingNew[-]        Annehmen, dass der new-Operator bei einem Fehler ausgelöst wird (standardmäßig deaktiviert)
+  referenceBinding[-]   Ein temporäres Element wird nicht an einen nicht konstanten
+                        lvalue-Verweis gebunden(standardmäßig deaktiviert)
+  twoPhase-             Zweiphasen-Namenssuche deaktivieren
+  ternary[-]            C++11-Standardregeln für Bedingungsoperator erzwingen (standardmäßig deaktiviert)
+  noexceptTypes[-]      C++17-noexcept-Regeln erzwingen (standardmäßig aktiviert in C++17 und höher)
+  alignedNew[-]         C++17-Ausrichtung dynamisch zugeordneter Objekte aktivieren (standardmäßig aktiviert)
+  hiddenFriend[-]       Hiermit werden Standard-C++-Regeln zu Hidden Friends erzwungen (impliziert durch "/permissive-").
+  externC[-]            Hiermit werden Standard-C++-Regeln für 'extern "C"'-Funktionen erzwungen (impliziert durch "/permissive-").
+  lambda[-]             Bessere Lambdaunterstützung durch Verwendung des neueren Lambdaprozessors (standardmäßig deaktiviert)
+  tlsGuards[-]          Laufzeitprüfungen für die TLS-Variableninitialisierung generieren (standardmäßig aktiviert)
+  zeroSizeArrayNew[-]   Aufruf von Member "new"/"delete" für Objektarrays der Größe 0 (standardmäßig aktiviert)
+  static_assert[-]      strikte Verarbeitung von ,static_assert" (impliziert durch /permissive-)
+  gotoScope[-]          kann nicht über die Initialisierung einer Variablen hinausgehen (impliziert durch /permissive-).
+  templateScope[-]      Erzwingen von Standardshadowingregeln für C++-Vorlagenparameter
+  enumTypes[-]          aktivieren zugrundeliegender Standard C++ -Enumerationstypen (standardmäßig deaktiviert)
+  checkGwOdr[-] Erzwingt C++-Standardverletzungen für eine Definitionsregel
+                        , wenn /Gw aktiviert wurde (standardmäßig deaktiviert)
+  __STDC__              __STDC__ zu 1 in C definieren
+/await: Aktiviert die Erweiterung für fortsetzbare Funktionen
+/await:strict: Aktiviert die Unterstützung von C++20-Standardcoroutinen für frühere Sprachversionen.
+/constexpr:depth<N>     Grenzwert für die Rekursionstiefe für constexpr-Auswertung (Standardwert: 512)
+/constexpr:backtrace<N> N constexpr-Auswertungen in der Diagnose anzeigen (Standardwert: 10)
+/constexpr:steps<N>     constexpr-Auswertung nach N Schritten beenden (Standardwert: 100.000)
+/Zi Debuginformationen aktivieren       
+/Z7 Debuginformationen nach altem Stil aktivieren
+/Zo[-] Umfangreichere Debuginformationen für optimierten Code generieren (standardmäßig aktiviert)
+/ZH:[MD5|SHA1|SHA_256] - Hashalgorithmus für die Berechnung der Dateiprüfsumme in den Debuginformationen (Standard: SHA_256)
+/Zp[n] Strukturen an n-Byte-Grenze packen
+/Zl Kein Standardbibliotheksname in OBJ-Datei
+/vd{0|1|2} vtordisp deaktivieren/aktivieren
+/vm<x> Typ von Memberzeigern            
+/std:<c11|c17> C-Standardversion
+    c11 - ISO/IEC 9899:2011
+    c17 - ISO/IEC 9899:2018
+/ZI Debuginformationen für Bearbeiten und Fortfahren aktivieren
+/openmp OpenMP 2.0-Spracherweiterungen aktivieren
+/openmp:experimental Aktivieren der OpenMP 2.0-Spracherweiterungen und der ausgewählten OpenMP 3.0 +-Spracherweiterungen
+/openmp:llvm OpenMP-Spracherweiterungen unter Verwendung der LLVM-Laufzeit
+
+                              -VERSCHIEDENES-
+
+@<file> Optionsantwortdatei             /?, /help Diese Hilfemeldung anzeigen
+/bigobj Erweitertes Objektformat generieren
+/c Nur kompilieren, nicht verknüpfen    
+/errorReport: Option ist veraltet. Interne Compilerfehler werden an Microsoft gemeldet.
+    none - Keinen Bericht senden                
+    prompt - Zum sofortigen Senden des Berichts auffordern
+    queue - Bei nächster Administratoranmeldung zum Senden des Berichts auffordern (Standard)
+    send - Bericht automatisch senden         
+/FC Bei Diagnose volle Pfadnamen verwenden
+/H<num> Maximale Länge externer Namen   /J Standardzeichentyp ist "unsigned"
+"/MP[n]" verwendet für die Kompilierung bis zu "n" Prozesse.
+/nologo Copyright-Meldung unterdrücken  /showIncludes Includedateinamen anzeigen
+/Tc<source file> Datei als .c-Datei kompilieren
+/Tp<source file> Datei als CPP-Datei kompilieren
+/TC Alle Dateien als .c-Datei kompilieren
+/TP Alle Dateien als .cpp-Datei kompilieren
+/V<string> Versionszeichenfolge festlegen
+/Yc[Datei] PCH-Datei erstellen          
+/Yd Debuginformationen in jeder OBJ-Datei ablegen
+/Yl[sym] PCH-Verweis für Debugbibliothek einfügen
+/Yu[Datei] PCH-Datei verwenden          /Y- Alle PCH-Optionen deaktivieren
+/Zm<n> Maximale Speicherzuweisung (% vom Standard)
+mit /FS die Verwendung von MSPDBSRV.EXE erzwingen
+/source-charset:<iana-name>|.nnnn: Festlegen des Quellzeichensatzes.
+/execution-charset:<iana-name>|.nnnn: Festlegen des Ausführungszeichensatzes.
+/utf-8: Festlegen des Quell- und Ausführungszeichensatzes auf UTF-8
+/validate-charset[-]: Überprüfen der UTF-8-Dateien auf zulässige Zeichen.
+/fastfail[-]: Der Modus "fast-fail" wird aktiviert.
+/JMC[-] Nur eigenen Code nativ aktivieren
+/presetPadding[-] Initialisierte Auffüllung mit Nullen für stapelbasierte Klassentypen
+/volatileMetadata[-]: Generiert Metadaten für Zugriffe auf flüchtigen Speicher.
+/sourcelink [file] Datei, die Informationen zur Quellverknüpfung enthält
+
+                                -VERKNÜPFEN-
+
+/LD .DLL erstellen                      /LDd .DLL-Debugbibliothek erstellen
+/LN NETMODULE erstellen                 /F<num> Stapelgröße festlegen
+/link [Linkeroptionen und -bibliotheken]/MD Mit "MSVCRT.LIB" verknüpfen
+/MT Mit "LIBCMT.LIB" verknüpfen         
+/MDd Mit Debugbibliothek "MSVCRTD.LIB" verknüpfen
+/MTd Mit Debugbibliothek "LIBCMTD.LIB" verknüpfen
+
+                              -CODE ANALYSIS-
+
+/analyze[-] Systemeigene Analyse aktivieren
+/analyze:quiet[-] Keine Warnung an Konsole
+/analyze:log<Name> Warnungen an Datei   
+/analyze:autolog protokollieren in *.pftlog
+/analyze:autolog:ext<ext> In *. protokollieren<ext>
+/analyze:autolog- Keine Protokolldatei  
+/analyze:WX- Warnungen nicht schwerwiegend
+/analyze:stacksize<zahl> Max. Stapelrahmen
+/analyze:max_paths<zahl> Max. Pfade     /analyze:Nur Analyse, keine Codegen.
+
+                              -DIAGNOSE-
+
+/diagnostics:<Argumente,...> steuert das Format von Diagnosemeldungen:
+             classic: Behält das vorherige Format bei.
+             column[-]: Gibt Spalteninformationen aus.
+             caret[-]: Gibt die Spalte und die angegebene Quellcodezeile aus.
+/Wall Alle Warnungen deaktivieren       /w   Alle Warnungen deaktivieren
+/W<n> Warnstufe festlegen (Standard: n=1)
+/Wv:xx[.yy[.zzzzz]] Nach Version xx.yy.zzzzz eingeführte Warnungen deaktivieren
+/WX Warnungen als Fehler behandeln      /WL Einzeilige Diagnose aktivieren
+/wd<n> Warnung n deaktivieren           /we<n> Warnung n als Fehler behandeln
+/wo<n> Warnung n einmal ausgeben        /w<l><n> Warnstufe 1-4 für n festlegen
+/external:I <Pfad>:      Speicherort für externe Header
+/external:env:<Variable>:     Umgebungsvariable mit Speicherorten für externe Header
+/external:anglebrackets: Alle von spitzen Klammern (<>) eingeschlossene Header werden als extern behandelt.
+/external:W<n>:          Warnstufe für externe Header
+/external:templates[-]: Warnstufe in der gesamten Vorlageninstanziierungskette auswerten
+/sdl zusätzliche Sicherheitsfunktionen und Warnungen aktivieren
+/options: Strenge unbekannte Compileroptionen stellen einen Fehler dar.
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/hswek/source/repos/apple-gen/apple-gen/wrappers/rust/apple_gen/functions/libs/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/hswek/AppData/Local/Programs/Python/Python39/Scripts/ninja.exe cmTC_5c375 && [1/2] Building C object CMakeFiles\cmTC_5c375.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_5c375.exe
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/hswek/source/repos/apple-gen/apple-gen/wrappers/rust/apple_gen/functions/libs/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Users/hswek/AppData/Local/Programs/Python/Python39/Scripts/ninja.exe cmTC_a505b && [1/2] Building CXX object CMakeFiles\cmTC_a505b.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_a505b.exe
+
+
+

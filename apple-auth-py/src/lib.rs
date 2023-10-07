@@ -28,10 +28,18 @@ impl IDS {
                 Ok(data) => Ok(data)
         }})
     }
+
+    fn encrypt_io_data(self_: PyRef<'_, Self>, data: &[u8]) -> PyResult<Vec<u8>> {
+        self_.py().allow_threads(move || -> PyResult<Vec<u8>> {
+            match apple_auth_utils::IDSValidator::encrypt_value(data) {
+                Err(err) => Err(pyo3::exceptions::PyRuntimeError::new_err(std::format!("{}", err))),
+                Ok(data) => Ok(data)
+        }})
+    }
 }
 
 #[pymodule]
-fn apple_functions_py(_py: Python, m: &PyModule) -> PyResult<()> {
+fn apple_auth(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_class::<IDS>()?;
     Ok(())
 }
@@ -43,9 +51,10 @@ mod tests {
     #[test]
     fn test_ids() {
         pyo3::prepare_freethreaded_python();
+
         pyo3::marker::Python::with_gil(|py|  {
-            let module = PyModule::new(py, "apple_functions_py").unwrap();
-            crate::apple_functions_py(py, &module).unwrap();
+            let module = PyModule::new(py, "apple_auth").unwrap();
+            crate::apple_auth(py, &module).unwrap();
 
             let sample_data = r#"{
                 "rom": "0C66833E0010",

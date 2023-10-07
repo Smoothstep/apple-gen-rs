@@ -2,7 +2,10 @@ use std::{sync::Arc, fmt::Display};
 
 #[derive(Debug, Clone)]
 pub enum RequestErrorType {
-    InvalidResponse,
+    InvalidResponse {
+        error_code: Option<u64>
+    },
+    InvalidRead,
     InvalidPList,
     RequestError {
         code: u16
@@ -17,14 +20,17 @@ pub struct RequestError {
 impl Display for RequestError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match &self.kind {
-            RequestErrorType::InvalidResponse => {
-                f.write_str("Failed to read response")
+            RequestErrorType::InvalidResponse { error_code } => {
+                f.write_str(&format!("Response returned error {}", error_code.unwrap_or_default()))
             },
             RequestErrorType::InvalidPList => {
                 f.write_str("Failed to parse plist")
             },
             RequestErrorType::RequestError { code } => {
                 f.write_str(&format!("Request error with code {}", code))
+            },
+            RequestErrorType::InvalidRead => {
+                f.write_str("Failed to read response")
             }
         }
     }
@@ -41,7 +47,7 @@ impl From<plist::Error> for RequestError {
 impl From<std::io::Error> for RequestError {
     fn from(_: std::io::Error) -> Self {
         Self {
-            kind: RequestErrorType::InvalidResponse
+            kind: RequestErrorType::InvalidRead
         }
     }
 }
@@ -112,15 +118,18 @@ impl IDSRequests {
         }
         
         let dict = plist::from_bytes::<plist::Dictionary>(&bytes)?;
-        let session_info = dict["session-info"].as_data();
 
-        if let Some(bytes) = session_info {
-            Ok(bytes.to_vec())
-        }
-        else {
-            Err(RequestError {
-                kind: RequestErrorType::InvalidResponse
-            })
+        match dict.get("session-info").and_then(|v| v.as_data()) {
+            Some(bytes) => {
+                Ok(bytes.to_vec())
+            },
+            None => {
+                Err(RequestError {
+                    kind: RequestErrorType::InvalidResponse {
+                        error_code: dict.get("status").and_then(|s| s.as_unsigned_integer())
+                    }
+                })
+            }
         }
     }
 
@@ -134,15 +143,18 @@ impl IDSRequests {
         }
 
         let dict = plist::from_bytes::<plist::Dictionary>(&bytes)?;
-        let cert = dict["cert"].as_data();
         
-        if let Some(bytes) = cert {
-            Ok(bytes.to_vec())
-        }
-        else {
-            Err(RequestError {
-                kind: RequestErrorType::InvalidResponse
-            })
+        match dict.get("cert").and_then(|v| v.as_data()) {
+            Some(bytes) => {
+                Ok(bytes.to_vec())
+            },
+            None => {
+                Err(RequestError {
+                    kind: RequestErrorType::InvalidResponse {
+                        error_code: dict.get("status").and_then(|s| s.as_unsigned_integer())
+                    }
+                })
+            }
         }
     }
 }

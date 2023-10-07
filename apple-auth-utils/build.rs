@@ -14,11 +14,12 @@ fn main() {
 
     config.very_verbose(true).build();
     
-    let dir = std::env::var("CARGO_MANIFEST_DIR").unwrap();
+    let cargo_dir = std::env::var("CARGO_MANIFEST_DIR").unwrap();
     let out_dir = std::env::var("OUT_DIR").unwrap();
 
-    println!("cargo:rustc-link-search={}", path::Path::new(&dir).join("../").display());
+    println!("cargo:rustc-link-search={}", path::Path::new(&cargo_dir).join("../").display());
     println!("cargo:rustc-link-search={}", path::Path::new(&out_dir).display());
+    println!("cargo:rustc-link-search=.");
 
 
     //println!("cargo:rustc-link-lib=apple_crypto");

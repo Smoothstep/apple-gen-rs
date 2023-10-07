@@ -49,7 +49,9 @@ pub mod external {
     {
         unsafe {
           let unsigned: &[u8; N] = std::mem::transmute(t);
-          let ser_tuple = serializer.serialize_str(&String::from_utf8_lossy(unsigned));
+          
+          let ser_tuple = serializer.serialize_str(
+            &String::from_utf8_lossy(unsigned)[0..unsigned.iter().position(|&x| x == 0u8).unwrap_or(N)]);
           ser_tuple
       }
     }
@@ -65,8 +67,9 @@ pub mod external {
   
           let slice = ser_tuple.as_bytes();
           let signed: &[i8] = std::mem::transmute(slice);
-  
-          result.copy_from_slice(&signed[..std::cmp::min(signed.len(), N)]);
+          let len = std::cmp::min(signed.len(), N);
+
+          result[..len].copy_from_slice(&signed[..len]);
   
           Ok(result)
         }
@@ -78,7 +81,7 @@ pub mod external {
   pub const SESSION_DATA_LEN: usize = 698;
 
   #[repr(C)]
-  #[derive(Serialize, Deserialize)]
+  #[derive(Serialize, Deserialize, Clone, Copy, PartialEq)]
   pub struct MachineInfo
   {
       #[serde(with = "serde_str_array")]
@@ -290,6 +293,7 @@ pub enum IDSErrorType {
   InvalidJsonField(FieldLengthError),
   RequestError(requests::RequestError),
   NacError(NacError),
+  InvalidSession,
   InvalidJson(serde_json::Error)
 }
 
@@ -308,6 +312,9 @@ impl Debug for IDSError {
       match &self.kind {
         IDSErrorType::NoError => {
           f.write_str("No error")
+        },
+        IDSErrorType::InvalidSession => {
+          f.write_str("Session length invalid")
         },
         IDSErrorType::InvalidJson(err) => {
           f.write_fmt(format_args!("Json error: {:?}", err))
@@ -365,6 +372,10 @@ impl IDSValidator {
     Ok(serde_json::to_string(&self.machine_info)?)
   }
 
+  pub fn get_machine_info(&self) -> MachineInfo {
+    self.machine_info
+  }
+
   pub fn from_required_fields(info: &RequiredSystemFields, cert: Option<Vec<u8>>) -> Result<Self, IDSError> {
     if let Some(e) = info.check_error() {
       return Err(IDSError::new(IDSErrorType::InvalidJsonField(e)));
@@ -398,10 +409,14 @@ impl IDSValidator {
         &mut context, 
         &mut request)?; 
 
-      let session_data = SessionData(requests::IDSRequests::request_session(
-        std::slice::from_raw_parts(request.0, REQUEST_LEN).to_vec())
-        .expect("Failed to request session data").try_into()
-        .expect("Invalid session size"));
+      let session_data = requests::IDSRequests::request_session(
+        std::slice::from_raw_parts(request.0, REQUEST_LEN).to_vec())?;
+      
+      if session_data.len() != SESSION_DATA_LEN {
+        return Err(IDSError{ kind: IDSErrorType::InvalidSession });
+      }
+
+      let session_data = SessionData(session_data.try_into().unwrap());
 
       let mut validation_sig = ValidationSignature::default();
       let mut validation_len = 0usize;
@@ -418,12 +433,11 @@ impl IDSValidator {
     }
   }
 
-  pub fn encrypt_value<T: AsRef<[u8]>>(value: T) -> Option<Vec<u8>> {
+  pub fn encrypt_value<T: AsRef<[u8]>>(value: T) -> Result<Vec<u8>, IDSError> {
     let slice = value.as_ref();
     let mut output: [u8; 17] = [0u8; 17];
-    
-    encrypt_io_data::call(slice.as_ptr(), slice.len() as u32, output.as_mut_ptr())
-      .map(|_| output.to_vec()).ok()
+    encrypt_io_data::call(slice.as_ptr(), slice.len() as u32, output.as_mut_ptr())?;
+    Ok(output.to_vec())
   }
   
   fn create_machine_info(info: &RequiredSystemFields) -> Result<MachineInfo, NacError> {
@@ -463,8 +477,11 @@ mod tests {
     }"#;
     let ids = crate::IDSValidator::from_json(sample_data, None).expect("Failed to create ids");
     let validation_data = ids.request_validation_data().expect("Failed to obtain validation data");
+    assert!(validation_data.len() >= 389);
+    
     let js = ids.get_json().expect("Failed to obtain machine info json");
-    assert!(validation_data.len() >= 389)
+    let obj: MachineInfo = serde_json::from_str(&js).expect("Failed to parse json into machine info");
+    assert!(obj == ids.get_machine_info());
   }
   
   #[test]

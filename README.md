@@ -7,7 +7,7 @@ The following projects contain wrapper functions around apple-gen for:
 
 There is also a native python module to give access to the rust library through PYO3, which builds wheels for your desired python version with maturin.
 
-apple-auth-utils requires [apple-gen]() to build correctly. 
+apple-auth-utils requires [apple-gen](https://github.com/Smoothstep/apple-gen) to build correctly. 
 
 # Status
 

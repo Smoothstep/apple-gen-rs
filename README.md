@@ -37,10 +37,6 @@ Apple ID service & validation data:
 
 Only few inputs have been tested so far.
 
-# Python
-
-cd into the 
-
 ## Generating validation data in Python
 
 Once the wheels are built with maturin and installed with pip (pip install [wheels] --force-reinstall), you should be able to call into the stub like so:

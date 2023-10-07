@@ -1,3 +1,5 @@
+**WIP**
+
 # Description
 
 The following projects contain wrapper functions around apple-gen for:
@@ -9,14 +11,39 @@ There is also a native python module to give access to the rust library through 
 
 apple-auth-utils requires [apple-gen](https://github.com/Smoothstep/apple-gen) to build correctly. 
 
+# Instructions
+
+clone the repo and make sure to pull the submodules
+
+`git clone --recursive https://github.com/Smoothstep/apple-gen-rs.git`
+
+To build python wheels, maturin is needed:
+
+`pip install maturin`
+
+cd into apple-auth-py and execute the command (README).
+
 # Status
 
 This is only an early implementation, thus most code is subject to change.
 For more information, refer to the apple-gen repository.
 
+# Hints
+
+Apple ID service & validation data:
+
+- When registering with different machine data, it's adviced to not change the product name from your initial device as it could trigger an automatic block.
+- For most variables, there are no validation checks, making it possible to use random inputs.
+
+Only few inputs have been tested so far.
+
 # Python
 
-Once the wheels are built with maturin, you should be able to call into the stub like so:
+cd into the 
+
+## Generating validation data in Python
+
+Once the wheels are built with maturin and installed with pip (pip install [wheels] --force-reinstall), you should be able to call into the stub like so:
 
 ```
 # Import necessary libraries

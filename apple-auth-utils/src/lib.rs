@@ -13,7 +13,6 @@ use serde::{Deserialize, Serialize};
 
 macro_rules! wrap_call {
   ($n:ident($($p:ident: $t:ty),*)) => {
-      
     #[link(name = "apple_crypto", kind = "static")]
     extern "C" {
       fn $n($($p: $t),*) -> NacError;
@@ -38,7 +37,9 @@ macro_rules! wrap_call {
 }
 
 pub mod external {
-  use serde::{Deserialize, Serialize};
+  use std::ops::{DerefMut, Deref};
+
+use serde::{Deserialize, Serialize};
 
   mod serde_str_array {
     use serde::{Deserialize, Serializer, Deserializer};
@@ -79,6 +80,7 @@ pub mod external {
   pub const REQUEST_LEN: usize = 338;
   pub const CERTIFICATE_LEN: usize = 2385;
   pub const SESSION_DATA_LEN: usize = 698;
+  pub const VALIDATION_CTX_LEN: usize = 824;
 
   #[repr(C)]
   #[derive(Serialize, Deserialize, Clone, Copy, PartialEq)]
@@ -142,9 +144,30 @@ pub mod external {
   }
 
   #[repr(C)]
-  pub struct ValidationContext(pub *mut u8);
+  pub struct ValidationContext(pub [u8; VALIDATION_CTX_LEN]);
 
-  impl Default for ValidationContext {
+  #[repr(C)]
+  pub struct ValidationContextPtr(*mut ValidationContext);
+
+  impl Deref for ValidationContextPtr {
+    type Target = ValidationContext;
+
+    fn deref(&self) -> &Self::Target {
+      unsafe {
+        &*self.0
+      }
+    }
+  }
+
+  impl DerefMut for ValidationContextPtr {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+      unsafe {
+        &mut *self.0
+      }
+    }
+  }
+
+  impl Default for ValidationContextPtr {
     fn default() -> Self {
         Self(std::ptr::null_mut())
     }
@@ -194,12 +217,12 @@ pub mod external {
   wrap_call!(init_nac_request(
     cert: *const ValidationCert, 
     machine_info: *const MachineInfo, 
-    out_context: *mut ValidationContext, 
+    out_context: *mut ValidationContextPtr, 
     out_request: *mut ValidationRequest
   ));
 
   wrap_call!(sign_nac_request(
-    context: ValidationContext, 
+    context: *mut ValidationContext, 
     session: *const SessionData,
     out_validation: *mut ValidationSignature,
     out_validation_length: *mut usize
@@ -213,11 +236,9 @@ pub mod external {
     context: *mut u8
   ));
 
-  impl Drop for ValidationContext {
+  impl Drop for ValidationContextPtr {
     fn drop(&mut self) {
-      unsafe {
-        free_nac(self);
-      }
+      free_nac::call(self.0).expect("Failed to free NAC");
     }
   }
 
@@ -400,7 +421,7 @@ impl IDSValidator {
 
   pub fn request_validation_data(&self) -> Result<Vec<u8>, IDSError> {
     unsafe {
-      let mut context = ValidationContext::default();
+      let mut context = ValidationContextPtr::default();
       let mut request = ValidationRequest::default();
 
       init_nac_request::call(
@@ -422,7 +443,7 @@ impl IDSValidator {
       let mut validation_len = 0usize;
       
       sign_nac_request::call(
-        context, 
+        &mut *context, 
         &session_data, 
         &mut validation_sig, 
         &mut validation_len)?;
@@ -512,7 +533,7 @@ mod tests {
         .expect("Failed to request certificate").try_into()
         .expect("Invalid cert size"));
   
-      let mut context = ValidationContext::default();
+      let mut context = ValidationContextPtr::default();
       let mut request = ValidationRequest::default();
   
       init_nac_request::call(&cert, &machine, &mut context, &mut request)
@@ -526,9 +547,9 @@ mod tests {
       let mut validation_sig = ValidationSignature::default();
       let mut validation_len = 0usize;
       
-      sign_nac_request::call(context, &session_data, &mut validation_sig, &mut validation_len)
+      sign_nac_request::call(&mut *context, &session_data, &mut validation_sig, &mut validation_len)
         .expect("Failed to sign validation data");
-    
+      
       let data = std::slice::from_raw_parts(validation_sig.0, validation_len);
       assert!(data.len() >= 389);
     }
